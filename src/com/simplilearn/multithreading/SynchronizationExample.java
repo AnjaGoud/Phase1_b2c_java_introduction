@@ -2,7 +2,6 @@ package com.simplilearn.multithreading;
 
 class Table {
 	void printTable(int n) {
-
 		synchronized (this) {
 			for (int i = 1; i <= 10; i++) {
 				System.out.println("" + n + "*" + i + "=" + n * i);
@@ -13,7 +12,6 @@ class Table {
 				}
 			}
 		}
-
 	}
 }
 
@@ -52,10 +50,12 @@ public class SynchronizationExample {
 
 		MultiRunnable1 runnable1 = new MultiRunnable1(table);
 		Thread t1 = new Thread(runnable1);
+		t1.setPriority(1);
 		t1.start();
 
 		MultiRunnable2 runnable2 = new MultiRunnable2(table);
 		Thread t2 = new Thread(runnable2);
+		t2.setPriority(10);
 		t2.start();
 
 	}
